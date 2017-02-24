@@ -2,11 +2,17 @@
 
 ## third-part libs are listed in package.json, "dependencies".
 ## run command 
+```
 >npm install
+```
 ## if you have installed nodejs in your computer, run this command to start it
+```
 >node
+```
 ## or
+```
 >node index
+```
 ## if you haven't installed nodejs, please follow these instruction on website
 [nodejs official website](https://nodejs.org/en/)
 ## default port is 3000, if you run it locally. 
