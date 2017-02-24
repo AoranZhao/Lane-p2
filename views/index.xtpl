@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Challenge Project #2">
+	<meta name="author" content="Aoran Zhao">
+	<title>Project #2</title>
+	<style>
+		#map {
+			height: 500px;
+			width: 50%;
+			float: left;
+		}
+
+		#weather {
+			float: left;
+			margin-left: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Your Location: </h1>
+	<div id="map">
+		
+	</div>
+	
+	<div id="weather">
+		<h1>Local Weather: </h1>
+		<h2>temprary: {{temp}} K | <span id="temp_c"></span> C</h2>
+		<h2>max temprary: {{temp_max}} K | <span id="temp_c_mx"></span> C</h2>
+		<h2>min temprary: {{temp_min}} K | <span id="temp_c_mn"></span> C</h2>
+	</div>
+
+	<script>
+		var temp_c, temp_c_mx, temp_c_mn;
+
+		function convert(t) {
+			if (parseFloat(t)) return parseFloat(t) - 273.15;
+			else return 0;
+		}
+
+		temp_c = convert({{temp}}).toFixed(2);
+		temp_c_mx = convert({{temp_max}}).toFixed(2);
+		temp_c_mn = convert({{temp_min}}).toFixed(2);
+
+		document.getElementById("temp_c").innerText = temp_c;
+		document.getElementById("temp_c_mx").innerText = temp_c_mx;
+		document.getElementById("temp_c_mn").innerText = temp_c_mn;
+
+		var map;
+		function initMap() {
+			map = new google.maps.Map(document.getElementById("map"), {
+				center: {lat: {{lat}}, lng: {{lon}}},
+				zoom: 8
+			});
+		}
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARJlhJ81f9uEj9qksOCfxSkvhFWJeBXJM&callback=initMap"></script>
+</body>
+</html>
